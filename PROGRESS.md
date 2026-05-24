@@ -4,8 +4,8 @@
 
 ## OVERALL PROGRESS
 
-**Completed: 2 / 15**
-**Average Score: 8.5**
+**Completed: 3 / 15**
+**Average Score: 8.0**
 
 ---
 
@@ -15,7 +15,7 @@
 |---|---|---|---|---|
 | BF01 | Node Fails to Start — Bad Data Directory | 0 | 8/10 | 2026-05-24 |
 | BF02 | Node Fails to Start — File Descriptor Limit | 0 | 9/10 | 2026-05-24 |
-| BF03 | Cluster Won't Form — Wrong Join Flags | 0 | — | — |
+| BF03 | Cluster Won't Form — Wrong Join Flags | 0 | 7/10 | 2026-05-24 |
 | BF04 | Client Cannot Connect — Connection Refused | 1 | — | — |
 | BF05 | Wrong Connection String / Wrong Port | 1 | — | — |
 | BF06 | Client Cannot Connect — TLS Certificate Error | 1 | — | — |
@@ -35,14 +35,14 @@
 
 | Dimension | Sessions Scored | Running Average |
 |---|---|---|
-| Triage Approach | 2 | 2.0 |
-| Tools Used | 2 | 2.0 |
-| Documentation | 2 | 1.5 |
-| Root Cause Accuracy | 2 | 2.0 |
-| Runbook Quality | 2 | 1.0 |
-| **Overall** | **2** | **8.5** |
+| Triage Approach | 3 | 2.0 |
+| Tools Used | 3 | 1.7 |
+| Documentation | 3 | 1.7 |
+| Root Cause Accuracy | 3 | 1.7 |
+| Runbook Quality | 3 | 1.0 |
+| **Overall** | **3** | **8.0** |
 
-**Weakest dimension so far:** Runbook Quality (1/2 both sessions) — missing executable commands in fix steps
+**Weakest dimension so far:** Runbook Quality (1/2 every session) — no explicit verification step with command; step 1 consistently missing the full `docker exec` wrapper
 
 ---
 
@@ -54,8 +54,10 @@
 
 **BF02 (2026-05-24):** Strong session — used `docker inspect` to confirm config, not just the error message. Documentation exact. Runbook is the recurring gap: fix step mentioned the `--ulimit` flag but omitted the full `docker run` command; verification step had no command. Same pattern as BF01.
 
+**BF03 (2026-05-24):** Best documentation navigation yet — found exact section independently. Triage was clean. Two gaps: `docker network inspect` used wrong network name (`crdb-test` vs `crdb-net`), and the internal CRDB log was not checked (would have shown exact port being dialed). Root cause identified the fact (port mismatch) but not the mechanism. Runbook improved — full fix command present — but still no explicit verification step.
+
 ---
 
 ## NEXT SESSION
 
-**Break-fix:** `start break-fix BF03`
+**Break-fix:** `start break-fix BF04`

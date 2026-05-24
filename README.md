@@ -36,7 +36,7 @@ Each scenario is scored against a rubric covering triage approach, tools used, d
 |---|---|---|---|
 | BF01 | Node Fails to Start — Bad Data Directory | 0 | 8/10 |
 | BF02 | Node Fails to Start — File Descriptor Limit | 0 | 9/10 |
-| BF03 | Cluster Won't Form — Wrong Join Flags | 0 | — |
+| BF03 | Cluster Won't Form — Wrong Join Flags | 0 | 7/10 |
 | BF04 | Client Cannot Connect — Connection Refused | 1 | — |
 | BF05 | Wrong Connection String / Wrong Port | 1 | — |
 | BF06 | Client Cannot Connect — TLS Certificate Error | 1 | — |
@@ -79,52 +79,27 @@ cockroachdb-support-lab/
 ├── README.md
 ├── CLAUDE.md
 ├── PROGRESS.md
-└── break-fix/
-    ├── BF01-node-fails-to-start-bad-data-directory/
-    │   ├── transcript.md
-    │   └── score.md
-    ├── BF02-node-fails-to-start-file-descriptor-limit/
-    │   ├── transcript.md
-    │   └── score.md
-    ├── BF03-cluster-wont-form-wrong-join-flags/
-    │   ├── transcript.md
-    │   └── score.md
-    ├── BF04-client-cannot-connect-connection-refused/
-    │   ├── transcript.md
-    │   └── score.md
-    ├── BF05-wrong-connection-string-wrong-port/
-    │   ├── transcript.md
-    │   └── score.md
-    ├── BF06-client-cannot-connect-tls-certificate-error/
-    │   ├── transcript.md
-    │   └── score.md
-    ├── BF07-transaction-retry-errors-no-retry-logic/
-    │   ├── transcript.md
-    │   └── score.md
-    ├── BF08-slow-queries-missing-index/
-    │   ├── transcript.md
-    │   └── score.md
-    ├── BF09-transaction-contention-spike/
-    │   ├── transcript.md
-    │   └── score.md
-    ├── BF10-hotspot-on-sequential-insert/
-    │   ├── transcript.md
-    │   └── score.md
-    ├── BF11-connection-pool-exhaustion/
-    │   ├── transcript.md
-    │   └── score.md
-    ├── BF12-node-oom-restart/
-    │   ├── transcript.md
-    │   └── score.md
-    ├── BF13-cpu-starvation-node-marked-suspect/
-    │   ├── transcript.md
-    │   └── score.md
-    ├── BF14-clock-skew-between-nodes/
-    │   ├── transcript.md
-    │   └── score.md
-    └── BF15-backup-failing-gc-ttl-mismatch/
-        ├── transcript.md
-        └── score.md
+├── BF01/
+│   ├── transcript.md
+│   └── score.md
+├── BF02/
+│   ├── transcript.md
+│   └── score.md
+├── BF03/
+│   ├── transcript.md
+│   └── score.md
+├── BF04/
+├── BF05/
+├── BF06/
+├── BF07/
+├── BF08/
+├── BF09/
+├── BF10/
+├── BF11/
+├── BF12/
+├── BF13/
+├── BF14/
+└── BF15/
 ```
 
 ---
