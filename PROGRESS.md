@@ -4,8 +4,8 @@
 
 ## OVERALL PROGRESS
 
-**Completed: 1 / 15**
-**Average Score: 8.0**
+**Completed: 2 / 15**
+**Average Score: 8.5**
 
 ---
 
@@ -14,7 +14,7 @@
 | ID | Scenario | Level | Score | Date |
 |---|---|---|---|---|
 | BF01 | Node Fails to Start — Bad Data Directory | 0 | 8/10 | 2026-05-24 |
-| BF02 | Node Fails to Start — File Descriptor Limit | 0 | — | — |
+| BF02 | Node Fails to Start — File Descriptor Limit | 0 | 9/10 | 2026-05-24 |
 | BF03 | Cluster Won't Form — Wrong Join Flags | 0 | — | — |
 | BF04 | Client Cannot Connect — Connection Refused | 1 | — | — |
 | BF05 | Wrong Connection String / Wrong Port | 1 | — | — |
@@ -35,14 +35,14 @@
 
 | Dimension | Sessions Scored | Running Average |
 |---|---|---|
-| Triage Approach | 1 | 2.0 |
-| Tools Used | 1 | 2.0 |
-| Documentation | 1 | 1.0 |
-| Root Cause Accuracy | 1 | 2.0 |
-| Runbook Quality | 1 | 1.0 |
-| **Overall** | **1** | **8.0** |
+| Triage Approach | 2 | 2.0 |
+| Tools Used | 2 | 2.0 |
+| Documentation | 2 | 1.5 |
+| Root Cause Accuracy | 2 | 2.0 |
+| Runbook Quality | 2 | 1.0 |
+| **Overall** | **2** | **8.5** |
 
-**Weakest dimension so far:** Documentation and Runbook Quality (1/2 each)
+**Weakest dimension so far:** Runbook Quality (1/2 both sessions) — missing executable commands in fix steps
 
 ---
 
@@ -52,8 +52,10 @@
 
 **BF01 (2026-05-24):** Documentation was the gap — broad disaster recovery page cited instead of the specific "Decommission a node" doc. Runbook had the right steps but omitted the exact `docker run` command and had no final verification step. Triage and root cause were strong.
 
+**BF02 (2026-05-24):** Strong session — used `docker inspect` to confirm config, not just the error message. Documentation exact. Runbook is the recurring gap: fix step mentioned the `--ulimit` flag but omitted the full `docker run` command; verification step had no command. Same pattern as BF01.
+
 ---
 
 ## NEXT SESSION
 
-**Break-fix:** `start break-fix BF02`
+**Break-fix:** `start break-fix BF03`
