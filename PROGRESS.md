@@ -4,7 +4,7 @@
 
 ## OVERALL PROGRESS
 
-**Completed: 3 / 15**
+**Completed: 4 / 15**
 **Average Score: 8.0**
 
 ---
@@ -16,7 +16,7 @@
 | BF01 | Node Fails to Start — Bad Data Directory | 0 | 8/10 | 2026-05-24 |
 | BF02 | Node Fails to Start — File Descriptor Limit | 0 | 9/10 | 2026-05-24 |
 | BF03 | Cluster Won't Form — Wrong Join Flags | 0 | 7/10 | 2026-05-24 |
-| BF04 | Client Cannot Connect — Connection Refused | 1 | — | — |
+| BF04 | Client Cannot Connect — Connection Refused | 1 | 8/10 | 2026-05-25 |
 | BF05 | Wrong Connection String / Wrong Port | 1 | — | — |
 | BF06 | Client Cannot Connect — TLS Certificate Error | 1 | — | — |
 | BF07 | Transaction Retry Errors — No Retry Logic | 2 | — | — |
@@ -35,14 +35,14 @@
 
 | Dimension | Sessions Scored | Running Average |
 |---|---|---|
-| Triage Approach | 3 | 2.0 |
-| Tools Used | 3 | 1.7 |
-| Documentation | 3 | 1.7 |
-| Root Cause Accuracy | 3 | 1.7 |
-| Runbook Quality | 3 | 1.0 |
-| **Overall** | **3** | **8.0** |
+| Triage Approach | 4 | 2.0 |
+| Tools Used | 4 | 1.75 |
+| Documentation | 4 | 1.5 |
+| Root Cause Accuracy | 4 | 1.5 |
+| Runbook Quality | 4 | 1.25 |
+| **Overall** | **4** | **8.0** |
 
-**Weakest dimension so far:** Runbook Quality (1/2 every session) — no explicit verification step with command; step 1 consistently missing the full `docker exec` wrapper
+**Weakest dimensions so far:** Documentation and Root Cause Accuracy (1/2 three times each) — documentation is cited as a trailing footnote rather than applied to the fix; root cause names the symptom correctly but the mechanism is consistently missing
 
 ---
 
@@ -56,8 +56,10 @@
 
 **BF03 (2026-05-24):** Best documentation navigation yet — found exact section independently. Triage was clean. Two gaps: `docker network inspect` used wrong network name (`crdb-test` vs `crdb-net`), and the internal CRDB log was not checked (would have shown exact port being dialed). Root cause identified the fact (port mismatch) but not the mechanism. Runbook improved — full fix command present — but still no explicit verification step.
 
+**BF04 (2026-05-25):** Strong triage and tools — CockroachDB internal logs used to confirm IP-level evidence (DNS resolved, packet arrived, port rejected), docker ps confirmed missing port mapping. First session with a 2/2 runbook: full fix command, specific commands throughout, four explicit verification steps at the end. Recurring gaps: documentation cited as a footnote with no evidence it was consulted; root cause named the missing port mapping correctly but didn't explain the Docker NAT/iptables mechanism behind it.
+
 ---
 
 ## NEXT SESSION
 
-**Break-fix:** `start break-fix BF04`
+**Break-fix:** `start break-fix BF05`
