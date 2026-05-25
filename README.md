@@ -38,7 +38,7 @@ Each scenario is scored against a rubric covering triage approach, tools used, d
 | BF02 | Node Fails to Start — File Descriptor Limit | 0 | 9/10 |
 | BF03 | Cluster Won't Form — Wrong Join Flags | 0 | 7/10 |
 | BF04 | Client Cannot Connect — Connection Refused | 1 | 8/10 |
-| BF05 | Wrong Connection String / Wrong Port | 1 | — |
+| BF05 | Wrong Connection String / Wrong Port | 1 | 8/10 |
 | BF06 | Client Cannot Connect — TLS Certificate Error | 1 | — |
 | BF07 | Transaction Retry Errors — No Retry Logic | 2 | — |
 | BF08 | Slow Queries — Missing Index | 3 | — |
@@ -92,6 +92,8 @@ cockroachdb-support-lab/
 │   ├── transcript.md
 │   └── score.md
 ├── BF05/
+│   ├── transcript.md
+│   └── score.md
 ├── BF06/
 ├── BF07/
 ├── BF08/

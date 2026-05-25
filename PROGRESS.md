@@ -4,7 +4,7 @@
 
 ## OVERALL PROGRESS
 
-**Completed: 4 / 15**
+**Completed: 5 / 15**
 **Average Score: 8.0**
 
 ---
@@ -17,7 +17,7 @@
 | BF02 | Node Fails to Start — File Descriptor Limit | 0 | 9/10 | 2026-05-24 |
 | BF03 | Cluster Won't Form — Wrong Join Flags | 0 | 7/10 | 2026-05-24 |
 | BF04 | Client Cannot Connect — Connection Refused | 1 | 8/10 | 2026-05-25 |
-| BF05 | Wrong Connection String / Wrong Port | 1 | — | — |
+| BF05 | Wrong Connection String / Wrong Port | 1 | 8/10 | 2026-05-25 |
 | BF06 | Client Cannot Connect — TLS Certificate Error | 1 | — | — |
 | BF07 | Transaction Retry Errors — No Retry Logic | 2 | — | — |
 | BF08 | Slow Queries — Missing Index | 3 | — | — |
@@ -35,14 +35,14 @@
 
 | Dimension | Sessions Scored | Running Average |
 |---|---|---|
-| Triage Approach | 4 | 2.0 |
-| Tools Used | 4 | 1.75 |
-| Documentation | 4 | 1.5 |
-| Root Cause Accuracy | 4 | 1.5 |
-| Runbook Quality | 4 | 1.25 |
-| **Overall** | **4** | **8.0** |
+| Triage Approach | 5 | 2.0 |
+| Tools Used | 5 | 1.8 |
+| Documentation | 5 | 1.4 |
+| Root Cause Accuracy | 5 | 1.4 |
+| Runbook Quality | 5 | 1.4 |
+| **Overall** | **5** | **8.0** |
 
-**Weakest dimensions so far:** Documentation and Root Cause Accuracy (1/2 three times each) — documentation is cited as a trailing footnote rather than applied to the fix; root cause names the symptom correctly but the mechanism is consistently missing
+**Weakest dimensions so far:** Documentation and Root Cause Accuracy (1/2 four times each) — documentation is consistently cited as a trailing footnote without evidence it was consulted; root cause correctly names what broke but never explains the mechanism behind it
 
 ---
 
@@ -58,8 +58,10 @@
 
 **BF04 (2026-05-25):** Strong triage and tools — CockroachDB internal logs used to confirm IP-level evidence (DNS resolved, packet arrived, port rejected), docker ps confirmed missing port mapping. First session with a 2/2 runbook: full fix command, specific commands throughout, four explicit verification steps at the end. Recurring gaps: documentation cited as a footnote with no evidence it was consulted; root cause named the missing port mapping correctly but didn't explain the Docker NAT/iptables mechanism behind it.
 
+**BF05 (2026-05-25):** Same pattern as BF04 — systematic triage, correct tools, runbook 2/2. Improvement: two docs cited this time, with connection-parameters.html being the more specific page. Recurring gaps unchanged: docs cited but not applied; root cause correctly identified the port mismatch and articulated the mapping rule clearly, but didn't explain that Docker port bindings are set at container creation time and are lost when a container is stopped and recreated.
+
 ---
 
 ## NEXT SESSION
 
-**Break-fix:** `start break-fix BF05`
+**Break-fix:** `start break-fix BF06`
