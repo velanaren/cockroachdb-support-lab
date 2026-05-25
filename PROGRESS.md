@@ -4,8 +4,8 @@
 
 ## OVERALL PROGRESS
 
-**Completed: 5 / 15**
-**Average Score: 8.0**
+**Completed: 6 / 15**
+**Average Score: 8.2**
 
 ---
 
@@ -18,7 +18,7 @@
 | BF03 | Cluster Won't Form — Wrong Join Flags | 0 | 7/10 | 2026-05-24 |
 | BF04 | Client Cannot Connect — Connection Refused | 1 | 8/10 | 2026-05-25 |
 | BF05 | Wrong Connection String / Wrong Port | 1 | 8/10 | 2026-05-25 |
-| BF06 | Client Cannot Connect — TLS Certificate Error | 1 | — | — |
+| BF06 | Client Cannot Connect — TLS Certificate Error | 1 | 9/10 | 2026-05-25 |
 | BF07 | Transaction Retry Errors — No Retry Logic | 2 | — | — |
 | BF08 | Slow Queries — Missing Index | 3 | — | — |
 | BF09 | Transaction Contention Spike | 3 | — | — |
@@ -35,14 +35,14 @@
 
 | Dimension | Sessions Scored | Running Average |
 |---|---|---|
-| Triage Approach | 5 | 2.0 |
-| Tools Used | 5 | 1.8 |
-| Documentation | 5 | 1.4 |
-| Root Cause Accuracy | 5 | 1.4 |
-| Runbook Quality | 5 | 1.4 |
-| **Overall** | **5** | **8.0** |
+| Triage Approach | 6 | 2.0 |
+| Tools Used | 6 | 2.0 |
+| Documentation | 6 | 1.5 |
+| Root Cause Accuracy | 6 | 1.3 |
+| Runbook Quality | 6 | 1.7 |
+| **Overall** | **6** | **8.2** |
 
-**Weakest dimensions so far:** Documentation and Root Cause Accuracy (1/2 four times each) — documentation is consistently cited as a trailing footnote without evidence it was consulted; root cause correctly names what broke but never explains the mechanism behind it
+**Weakest dimension so far:** Root Cause Accuracy (1/2 five times) — correct general cause named every session, but the mechanism behind the failure is consistently absent; explaining WHY at the protocol/system level is the one remaining gap
 
 ---
 
@@ -60,8 +60,10 @@
 
 **BF05 (2026-05-25):** Same pattern as BF04 — systematic triage, correct tools, runbook 2/2. Improvement: two docs cited this time, with connection-parameters.html being the more specific page. Recurring gaps unchanged: docs cited but not applied; root cause correctly identified the port mismatch and articulated the mapping rule clearly, but didn't explain that Docker port bindings are set at container creation time and are lost when a container is stopped and recreated.
 
+**BF06 (2026-05-25):** Best session to date — 9/10. First 2/2 on documentation: transport-layer-security.html found and applied (all nodes must share the same security mode). Tools were precise: grepping internal logs for `insecure|secure|certs` across all three nodes. Runbook 2/2 again. Root cause remains the one gap — secure/insecure mismatch correctly identified, but the mTLS inter-node gRPC mechanism (why the handshake fails at the protocol level) was not explained.
+
 ---
 
 ## NEXT SESSION
 
-**Break-fix:** `start break-fix BF06`
+**Break-fix:** `start break-fix BF07`
