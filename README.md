@@ -40,7 +40,7 @@ Each scenario is scored against a rubric covering triage approach, tools used, d
 | BF04 | Client Cannot Connect — Connection Refused | 1 | 8/10 |
 | BF05 | Wrong Connection String / Wrong Port | 1 | 8/10 |
 | BF06 | Client Cannot Connect — TLS Certificate Error | 1 | 9/10 |
-| BF07 | Transaction Retry Errors — No Retry Logic | 2 | — |
+| BF07 | Transaction Retry Errors — No Retry Logic | 2 | 9/10 |
 | BF08 | Slow Queries — Missing Index | 3 | — |
 | BF09 | Transaction Contention Spike | 3 | — |
 | BF10 | Hotspot on Sequential Insert | 3 | — |
@@ -98,6 +98,8 @@ cockroachdb-support-lab/
 │   ├── transcript.md
 │   └── score.md
 ├── BF07/
+│   ├── transcript.md
+│   └── score.md
 ├── BF08/
 ├── BF09/
 ├── BF10/

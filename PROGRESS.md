@@ -4,8 +4,8 @@
 
 ## OVERALL PROGRESS
 
-**Completed: 6 / 15**
-**Average Score: 8.2**
+**Completed: 7 / 15**
+**Average Score: 8.4**
 
 ---
 
@@ -19,7 +19,7 @@
 | BF04 | Client Cannot Connect — Connection Refused | 1 | 8/10 | 2026-05-25 |
 | BF05 | Wrong Connection String / Wrong Port | 1 | 8/10 | 2026-05-25 |
 | BF06 | Client Cannot Connect — TLS Certificate Error | 1 | 9/10 | 2026-05-25 |
-| BF07 | Transaction Retry Errors — No Retry Logic | 2 | — | — |
+| BF07 | Transaction Retry Errors — No Retry Logic | 2 | 9/10 | 2026-05-25 |
 | BF08 | Slow Queries — Missing Index | 3 | — | — |
 | BF09 | Transaction Contention Spike | 3 | — | — |
 | BF10 | Hotspot on Sequential Insert | 3 | — | — |
@@ -35,14 +35,14 @@
 
 | Dimension | Sessions Scored | Running Average |
 |---|---|---|
-| Triage Approach | 6 | 2.0 |
-| Tools Used | 6 | 2.0 |
-| Documentation | 6 | 1.5 |
-| Root Cause Accuracy | 6 | 1.3 |
-| Runbook Quality | 6 | 1.7 |
-| **Overall** | **6** | **8.2** |
+| Triage Approach | 7 | 2.0 |
+| Tools Used | 7 | 2.0 |
+| Documentation | 7 | 1.7 |
+| Root Cause Accuracy | 7 | 1.6 |
+| Runbook Quality | 7 | 1.6 |
+| **Overall** | **7** | **8.4** |
 
-**Weakest dimension so far:** Root Cause Accuracy (1/2 five times) — correct general cause named every session, but the mechanism behind the failure is consistently absent; explaining WHY at the protocol/system level is the one remaining gap
+**Weakest dimension so far:** Runbook Quality — the recurring gap has shifted from format (BF01–BF03) to content depth; runbooks now have the right structure but for non-standard scenarios (BF07) the diagnostic commands and code examples are missing
 
 ---
 
@@ -62,8 +62,10 @@
 
 **BF06 (2026-05-25):** Best session to date — 9/10. First 2/2 on documentation: transport-layer-security.html found and applied (all nodes must share the same security mode). Tools were precise: grepping internal logs for `insecure|secure|certs` across all three nodes. Runbook 2/2 again. Root cause remains the one gap — secure/insecure mismatch correctly identified, but the mTLS inter-node gRPC mechanism (why the handshake fails at the protocol level) was not explained.
 
+**BF07 (2026-05-25):** 9/10 — first 2/2 on root cause: OCC explained correctly, distributed cost of pessimistic locking articulated, PostgreSQL contrast drawn accurately. Triage and tools also 2/2 (two concurrent sessions on separate nodes, crdb_internal.cluster_locks). Documentation 2/2. Runbook is the one gap: reads as a recommendation document rather than numbered steps — missing reproduction commands, crdb_internal.cluster_locks query, and a concrete retry loop code snippet.
+
 ---
 
 ## NEXT SESSION
 
-**Break-fix:** `start break-fix BF07`
+**Break-fix:** `start break-fix BF08`
