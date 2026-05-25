@@ -4,7 +4,7 @@
 
 ## OVERALL PROGRESS
 
-**Completed: 7 / 15**
+**Completed: 7 / 7**
 **Average Score: 8.4**
 
 ---
@@ -20,14 +20,6 @@
 | BF05 | Wrong Connection String / Wrong Port | 1 | 8/10 | 2026-05-25 |
 | BF06 | Client Cannot Connect — TLS Certificate Error | 1 | 9/10 | 2026-05-25 |
 | BF07 | Transaction Retry Errors — No Retry Logic | 2 | 9/10 | 2026-05-25 |
-| BF08 | Slow Queries — Missing Index | 3 | — | — |
-| BF09 | Transaction Contention Spike | 3 | — | — |
-| BF10 | Hotspot on Sequential Insert | 3 | — | — |
-| BF11 | Connection Pool Exhaustion | 3 | — | — |
-| BF12 | Node OOM Restart | 4 | — | — |
-| BF13 | CPU Starvation — Node Marked SUSPECT | 4 | — | — |
-| BF14 | Clock Skew Between Nodes | 4 | — | — |
-| BF15 | Backup Failing — GC TTL Mismatch | 3 | — | — |
 
 ---
 
@@ -66,6 +58,6 @@
 
 ---
 
-## NEXT SESSION
+## PROJECT STATUS
 
-**Break-fix:** `start break-fix BF08`
+**Project complete.** All 7 scenarios finished. Final average score: 8.4/10.

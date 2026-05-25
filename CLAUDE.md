@@ -244,7 +244,7 @@ Mark the scenario complete, record the score, note any pattern in what was misse
 
 ---
 
-## 5. THE 15 SCENARIOS
+## 5. THE 7 SCENARIOS
 
 | ID | Scenario | Level | Score |
 |---|---|---|---|
@@ -255,14 +255,6 @@ Mark the scenario complete, record the score, note any pattern in what was misse
 | BF05 | Wrong Connection String / Wrong Port | 1 | — |
 | BF06 | Client Cannot Connect — TLS Certificate Error | 1 | — |
 | BF07 | Transaction Retry Errors — No Retry Logic | 2 | — |
-| BF08 | Slow Queries — Missing Index | 3 | — |
-| BF09 | Transaction Contention Spike | 3 | — |
-| BF10 | Hotspot on Sequential Insert | 3 | — |
-| BF11 | Connection Pool Exhaustion | 3 | — |
-| BF12 | Node OOM Restart | 4 | — |
-| BF13 | CPU Starvation — Node Marked SUSPECT | 4 | — |
-| BF14 | Clock Skew Between Nodes | 4 | — |
-| BF15 | Backup Failing — GC TTL Mismatch | 3 | — |
 
 **Level Guide**
 
@@ -271,8 +263,6 @@ Mark the scenario complete, record the score, note any pattern in what was misse
 | 0 | The node or cluster won't start — nothing is running |
 | 1 | The cluster is running but the client cannot reach it |
 | 2 | The client connects but operations fail |
-| 3 | Operations run but results are wrong, slow, or failing under load |
-| 4 | The cluster is running but degrading at the distributed systems layer |
 
 ---
 

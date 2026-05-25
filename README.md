@@ -8,7 +8,7 @@ A hands-on lab for building deep CockroachDB troubleshooting competence through 
 
 This project is a self-directed support engineering practice environment built around CockroachDB. The goal is simple: set up a real cluster, break it in ways that reflect actual production failures, diagnose and fix it, and leave behind a runbook that another engineer could follow.
 
-Each scenario is drawn from real customer-reported issues — cluster setup failures, connectivity problems, SQL behavior issues, and distributed system degradation. The failures progress incrementally from the most fundamental (a node that won't start) to the most complex (a node being marked SUSPECT due to CPU starvation).
+Each scenario is drawn from real customer-reported issues — cluster setup failures, connectivity problems, and SQL behavior issues. The failures progress incrementally from the most fundamental (a node that won't start) to the most complex (transaction retry errors with no retry logic).
 
 This is not a tutorial walkthrough. Every scenario starts with a symptom, not an explanation.
 
@@ -41,14 +41,6 @@ Each scenario is scored against a rubric covering triage approach, tools used, d
 | BF05 | Wrong Connection String / Wrong Port | 1 | 8/10 |
 | BF06 | Client Cannot Connect — TLS Certificate Error | 1 | 9/10 |
 | BF07 | Transaction Retry Errors — No Retry Logic | 2 | 9/10 |
-| BF08 | Slow Queries — Missing Index | 3 | — |
-| BF09 | Transaction Contention Spike | 3 | — |
-| BF10 | Hotspot on Sequential Insert | 3 | — |
-| BF11 | Connection Pool Exhaustion | 3 | — |
-| BF12 | Node OOM Restart | 4 | — |
-| BF13 | CPU Starvation — Node Marked SUSPECT | 4 | — |
-| BF14 | Clock Skew Between Nodes | 4 | — |
-| BF15 | Backup Failing — GC TTL Mismatch | 3 | — |
 
 **Level Guide**
 
@@ -57,8 +49,6 @@ Each scenario is scored against a rubric covering triage approach, tools used, d
 | 0 | The node or cluster won't start — nothing is running |
 | 1 | The cluster is running but the client cannot reach it |
 | 2 | The client connects but operations fail |
-| 3 | Operations run but results are wrong, slow, or failing under load |
-| 4 | The cluster is running but degrading at the distributed systems layer |
 
 ---
 
@@ -97,17 +87,9 @@ cockroachdb-support-lab/
 ├── BF06/
 │   ├── transcript.md
 │   └── score.md
-├── BF07/
-│   ├── transcript.md
-│   └── score.md
-├── BF08/
-├── BF09/
-├── BF10/
-├── BF11/
-├── BF12/
-├── BF13/
-├── BF14/
-└── BF15/
+└── BF07/
+    ├── transcript.md
+    └── score.md
 ```
 
 ---
